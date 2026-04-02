@@ -5,3 +5,4 @@ scikit-learn==1.4.0
 # torch is installed via Dockerfile to ensure CPU-only version
 pydantic==2.5.3
 httpx==0.26.0
+psycopg2-binary==2.9.9
