@@ -98,7 +98,7 @@ export default function PollutantChart({ pollutants, subIndices }: PollutantChar
                         axisLine={{ stroke: 'rgba(255,255,255,0.06)' }}
                     />
                     <Tooltip content={<CustomTooltip />} />
-                    <Bar dataKey="subIndex" radius={[6, 6, 0, 0]} animationDuration={800}>
+                    <Bar dataKey="concentration" radius={[6, 6, 0, 0]} animationDuration={800}>
                         {chartData.map((entry, index) => (
                             <Cell key={index} fill={entry.color} fillOpacity={0.8} />
                         ))}

@@ -90,15 +90,20 @@ export default function CityPage() {
         );
     }
 
-    if (!detail) {
+    if (!detail || detail.error || !detail.city || !detail.aqi) {
         return (
-            <div className="min-h-screen bg-background flex items-center justify-center theme-transition">
+            <div className="min-h-screen bg-background flex flex-col items-center justify-center theme-transition">
                 <div className="text-center">
                     <p className="text-4xl mb-4">😢</p>
-                    <h2 className="text-xl font-bold mb-2 text-primary theme-transition">City Not Found</h2>
-                    <p className="text-sm text-muted mb-4 theme-transition">Unable to load data for this city</p>
-                    <a href="/" className="text-accent-blue hover:underline text-sm theme-transition">← Back to Dashboard</a>
+                    <h2 className="text-xl font-bold mb-2 text-primary theme-transition">City or Data Not Found</h2>
+                    <p className="text-sm text-muted mb-4 theme-transition">Unable to load air quality data. The backend ML or analytics API might be returning an error.</p>
+                    <a href="/" className="px-4 py-2 bg-surface border border-border text-primary font-medium rounded-lg hover:border-accent-blue transition text-sm">← Back to Dashboard</a>
                 </div>
+                {detail?.detail && (
+                    <div className="mt-8 max-w-md p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+                        <p className="text-xs text-red-500 font-mono break-all font-medium">API Error: {typeof detail.detail === 'string' ? detail.detail : JSON.stringify(detail.detail)}</p>
+                    </div>
+                )}
             </div>
         );
     }
